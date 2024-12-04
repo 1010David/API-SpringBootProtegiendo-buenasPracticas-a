@@ -78,10 +78,14 @@ public class MedicoController {
         return ResponseEntity.noContent().build();
     }
 
-//    DELETE EN BASE DE DATOD
-//    public void eliminarMedico(@PathVariable Long id) {
-//        Medico medico = medicoRepository.getReferenceById(id);
-//        medicoRepository.delete(medico);
-//    }
-
+    @GetMapping("/{id}")
+    public ResponseEntity<DatosRespuestaMedico> retornaDatosMedico(@PathVariable Long id) {
+        Medico medico = medicoRepository.getReferenceById(id);
+        var datosMedico = new DatosRespuestaMedico(medico.getId(), medico.getNombre(), medico.getEmail(),
+                medico.getTelefono(), medico.getEspecialidad().toString(),
+                new DatosDireccion(medico.getDireccion().getCalle(), medico.getDireccion().getDistrito(),
+                        medico.getDireccion().getCiudad(), medico.getDireccion().getNumero(),
+                        medico.getDireccion().getComplemento()));
+        return ResponseEntity.ok(datosMedico);
+    }
 }
