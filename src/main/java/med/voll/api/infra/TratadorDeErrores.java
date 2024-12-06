@@ -11,22 +11,25 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class TratadorDeErrores {
 
+    // Maneja la excepción EntityNotFoundException
     @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity tratarError404() {
+    public ResponseEntity<Object> tratarError404() {
         return ResponseEntity.notFound().build();
     }
 
-    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity tratarError400(MethodArgumentNotValidException e) {
-        var errores = e.getFieldErrors().stream().map(DatosErrorValidacion::new).toList();
-
+    // Maneja la excepción MethodArgumentNotValidException (error de validación)
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Object> tratarError400(MethodArgumentNotValidException e) {
+        var errores = e.getFieldErrors().stream()
+                .map(DatosErrorValidacion::new)
+                .toList();
         return ResponseEntity.badRequest().body(errores);
     }
 
+    // Record para representar un error de validación de campo
     private record DatosErrorValidacion(String campo, String error) {
-        public DatosErrorValidacion(FieldError error){
-            this (error.getField(), error.getDefaultMessage());
+        public DatosErrorValidacion(FieldError error) {
+            this(error.getField(), error.getDefaultMessage());
         }
-
     }
 }
