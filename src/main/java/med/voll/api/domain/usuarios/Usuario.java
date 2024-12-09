@@ -1,4 +1,4 @@
-package med.voll.api.usuarios;
+package med.voll.api.domain.usuarios;
 
 
 import jakarta.persistence.*;
@@ -26,6 +26,7 @@ public class Usuario implements UserDetails {
     private Long id;
     private String login;
     private String clave;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("ROLE_USER"));
