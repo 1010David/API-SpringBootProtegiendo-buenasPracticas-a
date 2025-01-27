@@ -1,42 +1,69 @@
-📝 Spring Boot 3: Mejores Prácticas y Seguridad para una API REST
-Este README documenta los conceptos y técnicas aplicadas en el proyecto de gestión de pacientes y médicos, implementando buenas prácticas y medidas de seguridad con Spring Boot 3.
+## Spring Boot 3: API de Gestión de Pacientes y Médicos
 
-🛠️ Personalización de respuestas con ResponseEntity
-Personalización de los retornos en los métodos Controller.
-Modificación de los códigos HTTP devueltos en las respuestas.
-Inclusión de encabezados personalizados.
-Uso de los códigos HTTP adecuados para cada operación.
+### Descripción
+[Descripción concisa del proyecto y su objetivo]
 
-⚠️ Manejo de excepciones con @RestControllerAdvice
+### Tecnologías
+* Spring Boot 3
+* Java 11
+* Spring Security
+* JWT
+* [Otras tecnologías utilizadas]
 
-Centralización del manejo de excepciones con @RestControllerAdvice.
-Captura de excepciones específicas con @ExceptionHandler.
-Manejo de errores 404 (Not Found) y 400 (Bad Request) para validaciones.
-Simplificación del JSON de respuestas en casos de error.
+### Arquitectura
+[Diagrama de arquitectura simplificado]
 
-🔐 Autenticación y autorización con Spring Security
+### Funcionalidades
+* Gestión de pacientes (alta, baja, modificación)
+* Gestión de médicos (alta, baja, modificación)
+* Reserva de citas
+* ...
 
-Integración de Spring Security en el proyecto.
-Implementación de autenticación Stateless.
-Configuración de autorizaciones para proteger los endpoints de la API.
+### Desarrollo
+* **Estructura del proyecto:**
+  * Controladores
+  * Servicios
+  * Repositorios
+  * Entidades
+* **Buenas prácticas:**
+  * Manejo de excepciones
+  * Seguridad
+  * Personalización de respuestas
+* **Código de ejemplo:**
+  * [Ejemplo de controlador con ResponseEntity]
+  * [Ejemplo de @ExceptionHandler]
+  * ...
 
-🏷️ Generación de tokens con java-jwt
+### Seguridad
+* Autenticación: JWT
+* Autorización: Roles y permisos
+* Protección contra:
+  * Inyección SQL
+  * XSS
+  * CSRF
 
-Uso de la biblioteca Auth0 java-jwt para generar tokens JWT.
-Inyección de propiedades desde application.properties con @Value.
-Generación y retorno de tokens al autenticar usuarios.
+### Documentación
+* Swagger UI: [Enlace a la documentación interactiva]
 
-🛡️ Implementación de filtros con OncePerRequestFilter
-Implementación de Filters para procesar las solicitudes HTTP.
-Validación de tokens JWT en cada solicitud.
-Autenticación mediante SecurityContextHolder.
-Restricción y liberación de accesos según URL y método HTTP.
+### Contribuciones
+[Instrucciones para contribuir al proyecto]
 
-📚 Resumen del Aprendizaje
+### Licencia
+[Mencionar la licencia utilizada]
 
-Este proyecto aplica las mejores prácticas y seguridad en una API REST con Spring Boot 3, cubriendo:
 
-Personalización de respuestas con ResponseEntity.
-Manejo centralizado de excepciones.
-Autenticación y autorización con Spring Security y JWT.
-Validación de solicitudes mediante filtros personalizados.
+
+### Seguridad
+* **Autenticación:**
+  * Implementación de autenticación basada en tokens JWT.
+  * Generación de tokens personalizados con claims específicos (id de usuario, roles).
+  * Almacenamiento seguro de la clave secreta utilizada para firmar los tokens.
+* **Autorización:**
+  * Utilización de roles y permisos para restringir el acceso a los recursos.
+  * Configuración de Spring Security para proteger los endpoints.
+* **Protección contra vulnerabilidades:**
+  * Implementación de filtros para validar los tokens JWT en cada solicitud.
+  * Uso de parámetros de entrada escapados para prevenir inyecciones SQL.
+  * Protección contra XSS mediante el escape de caracteres especiales en las respuestas.
+* **Cifrado:**
+  * Cifrado de contraseñas utilizando algoritmos fuertes (bcrypt, Argon2).
