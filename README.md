@@ -10,8 +10,6 @@
 * JWT
 * [Otras tecnologías utilizadas]
 
-### Arquitectura
-[Diagrama de arquitectura simplificado]
 
 ### Funcionalidades
 * Gestión de pacientes (alta, baja, modificación)
@@ -43,14 +41,9 @@
   * CSRF
 
 ### Documentación
-* Swagger UI: [Enlace a la documentación interactiva]
+* Swagger UI
 
 ### Contribuciones
-[Instrucciones para contribuir al proyecto]
-
-### Licencia
-[Mencionar la licencia utilizada]
-
 
 
 ### Seguridad
